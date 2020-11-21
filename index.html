@@ -1,0 +1,981 @@
+<!doctype html>
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Introducing Lollipop, a sweet new take on Android.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="shortcut icon" href="images/ReologyLogo.ico">
+    <title>Reology</title>
+
+    <!-- Page styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="material.min.css">
+    <link rel="stylesheet" href="styles.css">
+	<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+    
+    
+
+    <style>
+    #view-source {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+
+
+
+
+
+
+/** Custom Select **/
+.custom-select-wrapper {
+  position: relative;
+  display: inline-block;
+  user-select: none;
+}
+  .custom-select-wrapper select {
+    display: none;
+  }
+  .custom-select {
+    position: relative;
+    display: inline-block;
+  }
+    .custom-select-trigger {
+      position: relative;
+      display: block;
+      width: 100px;
+      padding: 0 60px 0 22px;
+      font-size: 16.6px;
+      font-family: 'Microsoft YaHei UI';
+      font-weight: 360;
+      color: #555;
+      line-height: 40px;
+      background: #eee;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+      .custom-select-trigger:after {
+        position: absolute;
+        display: block;
+        content: '';
+        width: 10px; height: 10px;
+        top: 50%; right: 25px;
+        margin-top: -3px;
+        border-bottom: 3px solid #00dddd;
+        border-right: 3px solid #00dddd;
+        transform: rotate(45deg) translateY(-50%);
+        transition: all .4s ease-in-out;
+        transform-origin: 50% 0;
+      }
+      .custom-select.opened .custom-select-trigger:after {
+        margin-top: 3px;
+        transform: rotate(-135deg) translateY(-50%);
+      }
+  .custom-options {
+    position: absolute;
+    display: block;
+    top: 100%; left: 0; right: 0;
+    min-width: 100%;
+    margin: 15px 0;
+    border: 2px solid #00dddd;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 20px rgba(0,0,0,.66);
+    background: #fff;
+    transition: all .4s ease-in-out;
+    
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-15px);
+  }
+  .custom-select.opened .custom-options {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+    .custom-options:before {
+      position: absolute;
+      display: block;
+      content: '';
+      bottom: 100%; right: 25px;
+      width: 7px; height: 7px;
+      margin-bottom: -4px;
+      border-top: 1px solid #b5b5b5;
+      border-left: 1px solid #b5b5b5;
+      background: #fff;
+      transform: rotate(45deg);
+      transition: all .4s ease-in-out;
+    }
+    .option-hover:before {
+      background: #00dddd;
+    }
+    .custom-option {
+      position: relative;
+      display: block;
+      padding: 0 22px;
+      border-bottom: 1px solid #00dddd;
+      font-size: 16px;
+      font-family: 'Microsoft YaHei UI';
+      font-weight: 600;
+      color: #868686;
+      line-height: 42px;
+      cursor: pointer;
+      transition: all .4s ease-in-out;
+    }
+    .custom-option:first-of-type {
+      border-radius: 4px 4px 0 0;
+    }
+    .custom-option:last-of-type {
+      border-bottom: 0;
+      border-radius: 0 0 4px 4px;
+    }
+    .custom-option:hover,
+    .custom-option.selection {
+    	color: white;
+      background: #00dddd;
+    }
+
+
+
+
+
+
+
+    </style>
+  </head>
+  <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+      <div class="android-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row">
+          <span class="android-title mdl-layout-title">
+            <img class="android-logo-image" src="images/Logo.svg">
+          </span>
+          <!-- Add spacer, to align navigation to the right in desktop -->
+          <div class="header-spacer mdl-layout-spacer">
+
+          	
+
+          	
+
+          		<div class="container0">
+  <form>
+    
+    <div class="group">      
+      <input type="text" required>
+      
+      <span class="bar"></span>
+      <label class="c1"> 請 輸 入 店 名 或 路 名</label>
+    </div> 
+  </form></div>
+
+<div class="group">
+  <select name="sources" id="sources" class="custom-select sources" placeholder="搜 索 類 別">
+    <option value="profile">飲食</option>
+    <option value="word">娛樂 ／ 旅遊</option>
+    <option value="hashtag">雜貨 ／ 居家</option>
+    <option value="profile">藥妝</option>
+    <option value="word">服飾 ／ 鞋包</option>
+    <option value="word">3C ／ 家電</option>
+    <option value="hashtag">交通 ／ 運動</option>
+    <option value="hashtag">圖書 ／ 影音</option>
+  </select>
+</div>
+
+
+</div>
+
+<div class="group2">
+            <label class="mdl-button mdl-js-button mdl-button--icon ser" for="search-field">
+
+            	
+
+              <i class="material-icons">search</i>
+            </label>
+        </div>
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" type="text" id="search-field">
+            </div>
+            
+          
+         
+          
+          <!-- Navigation -->
+          
+          <span class="android-mobile-title mdl-layout-title">
+            
+          	<div class="container0">
+  <form>
+    
+    <div class="group">      
+      <input type="text" required>
+      
+      <span class="bar"></span>
+      <label class="c1">請輸入店名或商品名稱</label>
+    </div> 
+  </form>
+</div>
+
+          </span>
+          <button class="android-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect acc" id="more-button">
+            
+            <img class="accpic" src="images/Account.svg">
+          </button>
+          <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
+            <li class="mdl-menu__item aa">登入</li>
+            <li class="mdl-menu__item aa">註冊</li>
+            
+            
+          </ul>
+        </div>
+      </div>
+
+      <div class="android-drawer mdl-layout__drawer">
+        <span class="mdl-layout-title">
+          <img class="android-logo-image" src="images/android-logo-white.png">
+        </span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="">飲食</a>
+          <a class="mdl-navigation__link" href="">娛樂 ／ 旅遊</a>
+          <a class="mdl-navigation__link" href="">雜貨 ／ 居家</a>
+          <a class="mdl-navigation__link" href="">藥妝</a>
+          <a class="mdl-navigation__link" href="">服飾 ／ 鞋包</a>
+          <a class="mdl-navigation__link" href="">3C ／ 家電</a>
+          <a class="mdl-navigation__link" href="">交通 ／ 運動</a>
+          <a class="mdl-navigation__link" href="">圖書 ／ 影音</a>
+          <div class="android-drawer-separator"></div>
+          <span class="mdl-navigation__link" href="">Versions</span>
+          <a class="mdl-navigation__link" href="">Lollipop 5.0</a>
+          <a class="mdl-navigation__link" href="">KitKat 4.4</a>
+          <a class="mdl-navigation__link" href="">Jelly Bean 4.3</a>
+          <a class="mdl-navigation__link" href="">Android history</a>
+          <div class="android-drawer-separator"></div>
+          <span class="mdl-navigation__link" href="">Resources</span>
+          <a class="mdl-navigation__link" href="">Official blog</a>
+          <a class="mdl-navigation__link" href="">Android on Google+</a>
+          <a class="mdl-navigation__link" href="">Android on Twitter</a>
+          <div class="android-drawer-separator"></div>
+          <span class="mdl-navigation__link" href="">For developers</span>
+          <a class="mdl-navigation__link" href="">App developer resources</a>
+          <a class="mdl-navigation__link" href="">Android Open Source Project</a>
+          <a class="mdl-navigation__link" href="">Android SDK</a>
+        </nav>
+      </div>
+
+      <div class="android-content mdl-layout__content">
+        <a name="top"></a>
+        
+          
+          
+            <main class="container">
+  <h1>商 家 列 表</h1>
+  <cp-accordion-group cp-heading-level="2">
+  	<cp-accordion cp-primary-content="金玉堂南門店" cp-secondary-content="台南市中西區南門路225-1號" cp-open="false">
+  		<input type="checkbox" id="modal-g" />
+
+		<label for="modal-g" class="modal-btn-g">
+			<div class="comm"><img style="height: 30px;" src="images/Good.svg"><span class="comcou">66</span></div>
+		</label>
+		<!-- <div class="modal-bg"></div> -->
+		
+		<label for="modal-g" class="modal-bg-g"></label>
+		<div class="modal-content-g">
+	
+			<label for="modal-g" class="close-g">
+				<i class="fa fa-times" aria-hidden="true"></i>
+			</label>
+		
+			<header>
+				<h2>特 受 以 下 族 群 喜 愛</h2>
+			</header>
+			
+			<article class="content-g">
+				<h3>性別<p>&nbsp;／&nbsp;</p><p>男</p></h3><br>
+				<h3>年齡<p>&nbsp;／&nbsp;</p><p>19 ~ 25</p></h3><br>
+				<h3>工作<p>&nbsp;／&nbsp;</p><p>學生</p></h3><br>
+				<h3>收入<p>&nbsp;／&nbsp;</p><p>25,000 以下</p></h3>
+			</article>
+			
+			<footer>
+				
+			</footer>
+		</div>
+    	
+    	<input type="checkbox" id="modal-b" />
+
+		<label for="modal-b" class="modal-btn-b">
+			<div class="comm"><img style="height: 30px;" src="images/Good2.svg"><span class="comcou">25</span></div>
+		</label>
+		<!-- <div class="modal-bg"></div> -->
+		
+		<label for="modal-b" class="modal-bg-b"></label>
+		<div class="modal-content-b">
+	
+			<label for="modal-b" class="close-b">
+				<i class="fa fa-times" aria-hidden="true"></i>
+			</label>
+		
+			<header>
+				<h2>特 受 以 下 族 群 不 滿</h2>
+			</header>
+			
+			<article class="content-b">
+				<h3>性別<p>&nbsp;／&nbsp;</p><p>女</p></h3><br>
+				<h3>年齡<p>&nbsp;／&nbsp;</p><p>26 ~ 40</p></h3><br>
+				<h3>工作<p>&nbsp;／&nbsp;</p><p>上班族</p></h3><br>
+				<h3>收入<p>&nbsp;／&nbsp;</p><p>25,000 ~ 100,000</p></h3>
+			</article>
+			
+			<footer>
+				
+			</footer>
+		</div>
+    	
+    	<div class="spa"></div>
+		<input type="checkbox" id="modal" />
+
+		<label for="modal" class="modal-btn">
+			<label class="look">查 看 評 論</label>
+		</label>
+		<!-- <div class="modal-bg"></div> -->
+		
+		<label for="modal" class="modal-bg"></label>
+		<div class="modal-content">
+	
+			<label for="modal" class="close">
+				<i class="fa fa-times" aria-hidden="true"></i>
+			</label>
+		
+			<header>
+				<h2>查 看 評 論</h2>
+			</header>
+			
+			<article class="content">
+				<div class="tabs">
+  
+  					<input type="radio" id="tab1" name="tab-control" checked>
+  					<input type="radio" id="tab2" name="tab-control">
+  					<input type="radio" id="tab3" name="tab-control">  
+  					<ul>
+    					<li title="all-com"><label for="tab1" role="button"><br><span>所 有 評 論</span></label></li>
+    					<li title="good-com"><label for="tab2" role="button"><br><span>好 評</span></label></li>
+  						<li title="bad-com"><label for="tab3" role="button"><br><span>負 評</span></label></li>
+  					</ul>
+  
+  					<div class="slider"><div class="indicator"></div></div>
+  					<div class="content">
+    				<section>
+      					<h2>所 有 評 論</h2>商品種類豐富<br><br>價格標示不清楚<br><br>店員態度親切<br><br>離學校近很方便<br><br>沒有優惠</section>
+        			<section>
+          				<h2>好 評</h2>
+          					商品種類豐富<br><br>離學校近很方便<br><br>店員態度親切</section>
+        			<section>
+          				<h2>負 評</h2>
+          					價格標示不清楚<br><br>沒有優惠</section>
+  					</div>
+				</div>
+			</article>
+			
+			<footer>
+				
+			</footer>
+		</div>
+    <div style="width: 10px; display: inline-block;"> </div>
+		<input type="checkbox" id="modal-com" />
+
+		<label for="modal-com" class="modal-btn-com">
+			<label class="look">我 要 評 論</label>
+		</label>
+		<!-- <div class="modal-bg"></div> -->
+		
+		<label for="modal-com" class="modal-bg-com"></label>
+		<div class="modal-content-com">
+	
+			<label for="modal-com" class="close-com">
+				<i class="fa fa-times" aria-hidden="true"></i>
+			</label>
+		
+			<header>
+				<h2>我要評論！</h2>
+			</header>
+			
+			<article class="content-com">
+				<form>
+    
+    				<div class="group">      
+      					<input type="text" required>
+      
+      					<span class="bar"></span>
+      					<label class="c1"> 輸 入 你 對 這 家 店 的 想 法</label>
+    				</div> 
+  				</form>
+			</article>
+			
+			<footer>
+				<a target="" class="button success-com">送 出 評 論</a>
+				
+			</footer>
+		</div>
+    </cp-accordion>
+
+    <cp-accordion cp-primary-content="金玉堂文具批發廣場" cp-secondary-content="台南市南區金華路一段488號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion>
+    <cp-accordion cp-primary-content="金玉堂文具批發-文化店" cp-secondary-content="台南市東區中華東路三段300號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion>
+    <cp-accordion cp-primary-content="金玉堂 - 中華店" cp-secondary-content="台南市永康區中華路249號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion>
+    <cp-accordion cp-primary-content="金玉堂文具楠梓店" cp-secondary-content="高雄市楠梓區楠梓新路135號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion>
+    <cp-accordion cp-primary-content="金玉堂文具批發廣場" cp-secondary-content="高雄市楠梓區後昌路77號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion>
+    <cp-accordion cp-primary-content="金玉堂批發廣場 文濱店" cp-secondary-content="高雄市三民區文濱路47號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion>
+    <cp-accordion cp-primary-content="金玉堂文具大發店" cp-secondary-content="高雄市大寮區鳳林三路771-1號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion> 
+    <cp-accordion cp-primary-content="金玉堂文具批發廣場" cp-secondary-content="高雄市鼓山區九如四路1510號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion> 
+    <cp-accordion cp-primary-content="金玉堂海佃店" cp-secondary-content="台南市安南區海佃路一段361號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion> 
+
+    
+  <!--  <cp-accordion cp-primary-content="EVA伊娃日式泡芙專賣店" cp-secondary-content="台南市中西區大埔街47號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion>
+
+	<cp-accordion cp-primary-content="台南五妃廟豆腐冰" cp-secondary-content="台南市中西區五妃街206號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion>
+    <cp-accordion cp-primary-content="台大體育用品社" cp-secondary-content="台南市中西區健康路一段162號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion>
+    <cp-accordion cp-primary-content="雨傘王 - 台南門市" cp-secondary-content="台南市中西區健康路一段210號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion>
+    <cp-accordion cp-primary-content="進福炒鱔魚專家" cp-secondary-content="台南市中西區府前路一段46號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion>
+    <cp-accordion cp-primary-content="大漢美術用品社" cp-secondary-content="台南市東區青年路258號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion>
+    <cp-accordion cp-primary-content="政大書城 台南店" cp-secondary-content="台南市中西區西門路二段120號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion>
+    <cp-accordion cp-primary-content="小三美日平價美妝-台南中山門市" cp-secondary-content="台南市中西區中山路153號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion>
+    <cp-accordion cp-primary-content="金石堂書店 台南店" cp-secondary-content="台南市中西區中山路147號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion>
+    <cp-accordion cp-primary-content="7-ELEVEN 北門門市" cp-secondary-content="台南市東區北門路一段310號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion>
+    <cp-accordion cp-primary-content="7-ELEVEN 體育門市" cp-secondary-content="台南市中西區健康路一段166號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion>
+    <cp-accordion cp-primary-content="全家便利商店 台南大學店" cp-secondary-content="台南市中西區五妃街190號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion>
+    <cp-accordion cp-primary-content="金玉堂南門店" cp-secondary-content="台南市中西區南門路225-1號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion>
+    <cp-accordion cp-primary-content="7-ELEVEN 體育門市" cp-secondary-content="台南市中西區健康路一段166號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion>
+    <cp-accordion cp-primary-content="7-ELEVEN 體育門市" cp-secondary-content="台南市中西區健康路一段166號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion>
+    <cp-accordion cp-primary-content="7-ELEVEN 體育門市" cp-secondary-content="台南市中西區健康路一段166號" cp-open="false">
+      <div class="input-container">
+        <label for="startDate" class="input-container__label">Travel start date:</label>
+        <input id="startDate" type="date" class="input-container__input">
+      </div>
+    </cp-accordion> <!-- -->
+
+  </cp-accordion-group>
+</main>
+
+<!-- HTML Custom Elements Temapltes -->
+
+<template id="cpAccordionGroup">
+  <style>
+    :host {
+      display: block;
+    }
+    dl {
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <dl role="presentation">
+    <slot></slot>
+  </dl>
+</template>
+
+<template id="cpAccordion">
+  <style>
+    :host {
+      display: block;
+    }
+    .group {
+      will-change: box-shadow, margin;
+      transition: 
+        box-shadow 170ms cubic-bezier(0.4, 0.0, 0.2, 1),
+        margin 170ms cubic-bezier(0.4, 0.0, 0.2, 1);
+      background-color: #FFFFFF;
+    }
+    .group[cp-open="true"][cp-index="first"] {
+      margin: 0 0 16px;
+    }
+    .group[cp-open="true"][cp-index="last"] {
+      margin: 16px 0 0 0;
+    }
+    .group[cp-open="true"]:not([cp-index]) {
+      margin: 16px 0;
+    }
+    .group[cp-open="true"] {
+      border-radius: 6px;
+      box-shadow:
+        0px 2px 4px -1px rgba(0, 0, 0, 0.2), 
+        0px 4px 5px 0px rgba(0, 0, 0, 0.14), 
+        0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    }
+    .group[cp-open="false"] {
+      border-radius: 0;
+      margin: 0;
+      box-shadow:
+        0 3px 1px -2px rgba(0,0,0,.2),
+        0 2px 2px 0 rgba(0,0,0,.14),
+        0 1px 5px 0 rgba(0,0,0,.12);
+    }
+  </style>
+  <div class="group" cp-js-group>
+    <cp-accordion-header></cp-accordion-header>
+    <cp-accordion-body>
+      <slot></slot>
+    </cp-accordion-body>
+  </div>
+</template>
+
+<template id="cpAccordionHeader">
+  <style>
+    :host {
+      display: block;
+    }
+    dt.header {
+      display: block;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    button.header-button {
+      will-change: min-height, background-color;
+      transition: min-height 170ms cubic-bezier(0.4, 0.0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      width: 100%;
+      background-color: #EEEEEE00;
+      border: none;
+      border-left: 6px solid transparent;
+      margin: 0;
+      padding: 8px 0;
+      cursor: pointer;
+      /*overflow: hidden;*/
+    }
+    dt.header[cp-open="true"] button.header-button {
+      min-height: 64px;
+    }
+    dt.header[cp-open="false"] button.header-button {
+      min-height: 48px;
+    }
+    dt.header:not([cp-open="true"]) button.header-button:hover {
+      background-color: #EEEEEEFF;
+    }
+    dt.header:not([cp-open="true"]) button.header-button:focus{
+      outline: none;
+      border-left-color: #00dddd;
+    }
+    dt.header[cp-open="true"] button.header-button:focus {
+      outline: none;
+      border-left-color: #00dddd;
+    }
+    button.header-button:active {
+      background-color: #E0E0E0FF
+    }
+    span.header-button__text-container {
+      font-family: 'Microsoft YaHei UI';
+      font-weight: bolder;
+      font-size: 16px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 0 16px 0 24px;
+    }
+    span.header-button__text-container[cp-size="small"] {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    span.header-button__text-container-primary {
+      padding: 0 16px 0 0;
+      width: 300px;
+      min-width: 300px;
+      max-width: 300px;
+      text-align: left;
+      text-overflow: ellipsis;
+      color: #000000DE;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    span.header-button__text-container-secondary {
+      max-width: 300px;
+      color: #0000008F;
+      text-align: left;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    span.header-button__chevron {
+      padding: 0 24px 0 0;
+      font-size: 0;
+    }
+    span.header-button__chevron svg {
+      will-change: transfrom;
+      transition: transform 170ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    }
+    dt.header[cp-open="true"] span.header-button__chevron svg {
+      transform: rotate(180deg);
+    }
+    dt.header[cp-open="false"] span.header-button__chevron svg {
+      transform: rotate(0deg);
+    }
+  </style>
+  <svg hidden display="none" xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+      <symbol id="sprite-chevron" viewBox="0 0 24 24">
+        <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <dt role="heading" aria-level="3" class="header" cp-js-header>
+    <button type="button" aria-expanded="false" aria-disabled="false" class="header-button" cp-js-button>
+      <span class="header-button__text-container" cp-js-text-container>
+        <span class="header-button__text-container-primary" cp-js-primary-text></span>
+        <span class="header-button__text-container-secondary" cp-js-secondary-text></span>
+      </span>
+      <span class="header-button__chevron" cp-js-chevron>
+        <svg role="img" title="toggle accordian" fill="#0000008A" width="24" height="24">
+          <use xlink:href="#sprite-chevron"/>
+        </svg>
+      </span>
+    </button>
+  </dt>
+</template>
+
+<template id="cpAccordionBody">
+  <style>
+    :host {
+      display: block;
+    }
+    dd.body {
+      will-change: max-height, opacity;
+      transition:
+        max-height 170ms cubic-bezier(0.4, 0.0, 0.2, 1),
+        opacity 170ms cubic-bezier(0.4, 0.0, 0.2, 1);
+      display: block;
+      margin: 0;
+      overflow: hidden;
+    }
+    dd.body[cp-open="true"] {
+      /* display: block;*/
+    }
+    dd.body[cp-open="false"] {
+      /* display: none; */
+      max-height: 0;
+      opacity: 0;
+    }
+    .body-container {
+      /* padding: 8px 24px 16px 24px; */
+      padding: 0 24px 16px 24px;
+    }
+  </style>
+  <dd role="region" class="body" cp-js-body>
+    <div class="body-container">
+      <slot></slot>
+    </div>
+  </dd>
+</template>
+          
+<!--
+          <div class="logo-font android-slogan">be together. not the same.</div>
+          <div class="logo-font android-sub-slogan">welcome to android... be yourself. do your thing. see what's going on.</div>
+
+          <a href="#screens">
+            <button class="android-fab mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+              <i class="material-icons">expand_more</i>
+            </button>
+          </a>
+        
+        
+        <div class="android-wear-section">
+          <div class="android-wear-band">
+            <div class="android-wear-band-text">
+              <div class="mdl-typography--display-2 mdl-typography--font-thin">The best of Google built in</div>
+              <p class="mdl-typography--headline mdl-typography--font-thin">
+                Android works perfectly with your favourite apps like Google Maps,
+                Calendar and YouTube.
+              </p>
+              <p>
+                <a class="mdl-typography--font-regular mdl-typography--text-uppercase android-alt-link" href="">
+                  See what's new in the Play Store&nbsp;<i class="material-icons">chevron_right</i>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="android-more-section">
+          <div class="android-section-title mdl-typography--display-1-color-contrast">More from Android</div>
+          <div class="android-card-container mdl-grid">
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+              <div class="mdl-card__media">
+                <img src="images/more-from-1.png">
+              </div>
+              <div class="mdl-card__title">
+                 <h4 class="mdl-card__title-text">Get going on Android</h4>
+              </div>
+              <div class="mdl-card__supporting-text">
+                <span class="mdl-typography--font-light mdl-typography--subhead">Four tips to make your switch to Android quick and easy</span>
+              </div>
+              <div class="mdl-card__actions">
+                 <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="">
+                   Make the switch
+                   <i class="material-icons">chevron_right</i>
+                 </a>
+              </div>
+            </div>
+
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+              <div class="mdl-card__media">
+                <img src="images/more-from-4.png">
+              </div>
+              <div class="mdl-card__title">
+                 <h4 class="mdl-card__title-text">Create your own Android character</h4>
+              </div>
+              <div class="mdl-card__supporting-text">
+                <span class="mdl-typography--font-light mdl-typography--subhead">Turn the little green Android mascot into you, your friends, anyone!</span>
+              </div>
+              <div class="mdl-card__actions">
+                 <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="">
+                   androidify.com
+                   <i class="material-icons">chevron_right</i>
+                 </a>
+              </div>
+            </div>
+
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+              <div class="mdl-card__media">
+                <img src="images/more-from-2.png">
+              </div>
+              <div class="mdl-card__title">
+                 <h4 class="mdl-card__title-text">Get a clean customisable home screen</h4>
+              </div>
+              <div class="mdl-card__supporting-text">
+                <span class="mdl-typography--font-light mdl-typography--subhead">A clean, simple, customisable home screen that comes with the power of Google Now: Traffic alerts, weather and much more, just a swipe away.</span>
+              </div>
+              <div class="mdl-card__actions">
+                 <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="">
+                   Download now
+                   <i class="material-icons">chevron_right</i>
+                 </a>
+              </div>
+            </div>
+
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+              <div class="mdl-card__media">
+                <img src="images/more-from-3.png">
+              </div>
+              <div class="mdl-card__title">
+                 <h4 class="mdl-card__title-text">Millions to choose from</h4>
+              </div>
+              <div class="mdl-card__supporting-text">
+                <span class="mdl-typography--font-light mdl-typography--subhead">Hail a taxi, find a recipe, run through a temple – Google Play has all the apps and games that let you make your Android device uniquely yours.</span>
+              </div>
+              <div class="mdl-card__actions">
+                 <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="">
+                   Find apps
+                   <i class="material-icons">chevron_right</i>
+                 </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        -->
+
+        <footer class="android-footer mdl-mega-footer">
+          <div class="mdl-mega-footer--top-section">
+         <!--   <div class="mdl-mega-footer--left-section">
+              <button class="mdl-mega-footer--social-btn"></button>
+              &nbsp;
+              <button class="mdl-mega-footer--social-btn"></button>
+              &nbsp;
+              <button class="mdl-mega-footer--social-btn"></button>
+            </div> -->
+            <div class="mdl-mega-footer--right-section">
+              <a class="mdl-typography--font-light" href="#top">
+                Back to Top
+                <i class="material-icons">expand_less</i>
+              </a>
+            </div>
+          </div>
+
+          <div class="mdl-mega-footer--middle-section lastlogo">
+            <p class="mdl-typography--font-light"><img id="flre" src="images/relogo.png"> Reology：Market Review Analysis Platform</p>
+            
+            <p class="mdl-typography--font-light"><img id="fl" src="images/JNE【4K】.svg"> ／ Jessie Yang x Eason Hsu © 2018</p>
+          </div>
+
+   <!--       <div class="mdl-mega-footer--bottom-section">
+            <a class="android-link android-link-menu mdl-typography--font-light" id="version-dropdown">
+              Versions
+              <i class="material-icons">arrow_drop_up</i>
+            </a>
+            <ul class="mdl-menu mdl-js-menu mdl-menu--top-left mdl-js-ripple-effect" for="version-dropdown">
+              <li class="mdl-menu__item">5.0 Lollipop</li>
+              <li class="mdl-menu__item">4.4 KitKat</li>
+              <li class="mdl-menu__item">4.3 Jelly Bean</li>
+              <li class="mdl-menu__item">Android History</li>
+            </ul>
+            <a class="android-link android-link-menu mdl-typography--font-light" id="developers-dropdown">
+              For Developers
+              <i class="material-icons">arrow_drop_up</i>
+            </a>
+            <ul class="mdl-menu mdl-js-menu mdl-menu--top-left mdl-js-ripple-effect" for="developers-dropdown">
+              <li class="mdl-menu__item">App developer resources</li>
+              <li class="mdl-menu__item">Android Open Source Project</li>
+              <li class="mdl-menu__item">Android SDK</li>
+              <li class="mdl-menu__item">Android for Work</li>
+            </ul>
+            <a class="android-link mdl-typography--font-light" href="">Blog</a>
+            <a class="android-link mdl-typography--font-light" href="">Privacy Policy</a>
+          </div> -->
+
+        </footer>
+     <!-- </div>
+    </div>
+     <a href="https://github.com/google/material-design-lite/blob/mdl-1.x/templates/android-dot-com/" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">View Source</a> -->
+    <script src="material.min.js"></script>
+
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="index.js"></script>
+  </body>
+</html>

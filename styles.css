@@ -1,0 +1,1755 @@
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+ .comcou {
+  margin-left: 10px;
+ }
+
+ .comm {
+  font-size: 18px;
+  margin: 0 20px;
+  display: inline;
+ }
+
+ .spa {
+  margin-bottom: 15px;
+ }
+
+ .favo {
+  font-family: 'Microsoft YaHei UI';
+  color: #aaa;
+  font-weight: 600;
+  font-size: 18px;
+ }
+
+
+
+ .mdl-layout__content {
+  background-color: #f1f1f1;
+ }
+
+ .comm:hover {
+ 	cursor: pointer;
+ 	color: #00dddd;
+ 	font-weight: 600;
+ }
+
+
+.modal-btn {
+  font-size: 16px;
+  font-family: 'Microsoft YaHei UI';
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 20px;
+  margin-top: 1em;
+  padding: 1em 2em;
+  background-color: #00dddd;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: box-shadow 600ms ease;
+}
+.modal-btn:hover {
+  background-color: #01aaaa;
+  cursor: pointer;
+}
+
+.modal-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 10;
+  visibility: hidden;
+  transition: background-color 250ms linear;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: auto;
+  margin-top: -18%;
+  margin-left: -25%;
+  padding: 30px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  transform: scale(0);
+  transition: transform 250ms ease;
+  visibility: hidden;
+  z-index: 20;
+}
+.modal-content .close {
+  position: relative;
+  float: right;
+  font-size: 18px;
+  transition: transform 500ms ease;
+  z-index: 11;
+}
+.modal-content .close:hover {
+  cursor: pointer;
+  color: #00dddd;
+  transform: rotate(180deg);
+}
+.modal-content header {
+  position: relative;
+  display: block;
+  border-bottom: 1px solid #eee;
+}
+.modal-content header h2 {
+  font-weight: 600;
+  margin: 0 0 10px;
+  padding: 0;
+  font-size: 28px;
+}
+.modal-content article {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1.75;
+}
+.modal-content footer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0 0;
+}
+.modal-content footer .button {
+  position: relative;
+  padding: 10px 30px;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 400;
+  color: white;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+.modal-content footer .button:before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: width 250ms ease;
+  z-index: 0;
+}
+.modal-content footer .button:hover:before {
+  width: 100%;
+}
+.modal-content footer .button.success {
+  font-family: 'Microsoft YaHei UI';
+  margin-right: 5px;
+  background-color: #2ecc71;
+}
+.modal-content footer .button.danger {
+  font-family: 'Microsoft YaHei UI';
+  background-color: #e74c3c;
+}
+
+#modal {
+  display: none;
+}
+
+#modal:checked ~ .modal-bg {
+  visibility: visible;
+  background-color: black;
+  opacity: 0.7;
+  transition: background-color 250ms linear;
+}
+#modal:checked ~ .modal-content {
+  visibility: visible;
+  transform: scale(1);
+  transition: transform 250ms ease;
+  z-index: 111;
+}
+
+ .mdl-layout__content-com {
+  background-color: #f1f1f1;
+ }
+
+.modal-btn-com {
+  font-size: 16px;
+  font-family: 'Microsoft YaHei UI';
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 20px;
+  margin-top: 1em;
+  padding: 1em 2em;
+  background-color: #00dddd;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: box-shadow 600ms ease;
+}
+.modal-btn-com:hover {
+  background-color: #01aaaa;
+  cursor: pointer;
+}
+
+.modal-bg-com {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 10;
+  visibility: hidden;
+  transition: background-color 250ms linear;
+}
+
+.modal-content-com {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: auto;
+  margin-top: -18%;
+  margin-left: -25%;
+  padding: 30px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  transform: scale(0);
+  transition: transform 250ms ease;
+  visibility: hidden;
+  z-index: 20;
+}
+.modal-content-com .close-com {
+  cursor: pointer;
+  position: relative;
+  float: right;
+  font-size: 18px;
+  transition: transform 500ms ease;
+  z-index: 11;
+}
+.modal-content-com .close-com:hover {
+  color: #00dddd;
+  transform: rotate(180deg);
+}
+.modal-content-com header {
+  position: relative;
+  display: block;
+  border-bottom: 1px solid #eee;
+}
+.modal-content-com header h2 {
+  font-weight: 600;
+  margin: 0 0 10px;
+  padding: 0;
+  font-size: 28px;
+}
+.modal-content-com article {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 20px 0 30px 0;
+  font-size: 16px;
+  line-height: 1.75;
+}
+.modal-content-com footer {
+  font-family: 'Microsoft YaHei UI';
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0 0;
+}
+.modal-content-com footer .button {
+  font-family: 'Microsoft YaHei UI';
+  position: relative;
+  padding: 10px 30px;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 400;
+  color: white;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+.modal-content-com footer .button:before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: width 250ms ease;
+  z-index: 0;
+}
+.modal-content-com footer .button:hover:before {
+  width: 100%;
+}
+.modal-content-com footer .button.success-com {
+  cursor: pointer;
+  margin-right: 5px;
+  background-color: #2ecc71;
+}
+.modal-content-com footer .button.danger-com {
+  background-color: #e74c3c;
+}
+
+#modal-com {
+  display: none;
+}
+
+#modal-com:checked ~ .modal-bg-com {
+  visibility: visible;
+  background-color: black;
+  opacity: 0.7;
+  transition: background-color 250ms linear;
+}
+#modal-com:checked ~ .modal-content-com {
+  visibility: visible;
+  transform: scale(1);
+  transition: transform 250ms ease;
+  z-index: 111;
+}
+
+
+
+
+
+
+ .mdl-layout__content-b {
+  background-color: #f1f1f1;
+ }
+
+.modal-btn-b {
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: box-shadow 600ms ease;
+}
+.modal-btn-b:hover {
+  cursor: pointer;
+}
+
+.modal-bg-b {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 10;
+  visibility: hidden;
+  transition: background-color 250ms linear;
+}
+
+.modal-content-b {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: auto;
+  margin-top: -18%;
+  margin-left: -25%;
+  padding: 30px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  transform: scale(0);
+  transition: transform 250ms ease;
+  visibility: hidden;
+  z-index: 20;
+}
+.modal-content-b .close-b {
+  cursor: pointer;
+  position: relative;
+  float: right;
+  font-size: 18px;
+  transition: transform 500ms ease;
+  z-index: 11;
+}
+.modal-content-b .close-b:hover {
+  color: #00dddd;
+  transform: rotate(180deg);
+}
+.modal-content-b header {
+  position: relative;
+  display: block;
+  border-bottom: 1px solid #eee;
+}
+.modal-content-b header h2 {
+  font-weight: 600;
+  margin: 0 0 10px;
+  padding: 0;
+  font-size: 24px;
+}
+
+.modal-content-b article h3 {
+  font-family: 'Microsoft YaHei UI';
+  font-weight: 600;
+  color: #00dddd;
+  font-size: 24px;
+  display: inline-block;
+}
+.modal-content-b article p {
+  font-family: 'Microsoft YaHei UI';
+  font-weight: 600;
+  color: #aaa;
+  font-size: 24px;
+  display: inline-block;
+}
+.modal-content-b article {
+  text-align: left;
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 20px 0 30px 0;
+  font-size: 16px;
+  line-height: 1.75;
+}
+.modal-content-b footer {
+  font-family: 'Microsoft YaHei UI';
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0 0;
+}
+.modal-content-b footer .button {
+  font-family: 'Microsoft YaHei UI';
+  position: relative;
+  padding: 10px 30px;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 400;
+  color: white;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+.modal-content-b footer .button:before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: width 250ms ease;
+  z-index: 0;
+}
+.modal-content-b footer .button:hover:before {
+  width: 100%;
+}
+.modal-content-b footer .button.success-b {
+  cursor: pointer;
+  margin-right: 5px;
+  background-color: #2ecc71;
+}
+.modal-content-b footer .button.danger-b {
+  background-color: #e74c3c;
+}
+
+#modal-b {
+  display: none;
+}
+
+#modal-b:checked ~ .modal-bg-b {
+  visibility: visible;
+  background-color: black;
+  opacity: 0.7;
+  transition: background-color 250ms linear;
+}
+#modal-b:checked ~ .modal-content-b {
+  visibility: visible;
+  transform: scale(1);
+  transition: transform 250ms ease;
+  z-index: 111;
+}
+
+
+
+
+.mdl-layout__content-g {
+  background-color: #f1f1f1;
+ }
+
+.modal-btn-g {
+  margin-top: 18px;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: box-shadow 600ms ease;
+}
+.modal-btn-g:hover {
+  cursor: pointer;
+}
+
+.modal-bg-g {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 10;
+  visibility: hidden;
+  transition: background-color 250ms linear;
+}
+
+.modal-content-g {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: auto;
+  margin-top: -18%;
+  margin-left: -25%;
+  padding: 30px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  transform: scale(0);
+  transition: transform 250ms ease;
+  visibility: hidden;
+  z-index: 20;
+}
+.modal-content-g .close-g {
+  cursor: pointer;
+  position: relative;
+  float: right;
+  font-size: 18px;
+  transition: transform 500ms ease;
+  z-index: 11;
+}
+.modal-content-g .close-g:hover {
+  color: #00dddd;
+  transform: rotate(180deg);
+}
+.modal-content-g header {
+  position: relative;
+  display: block;
+  border-bottom: 1px solid #eee;
+}
+.modal-content-g header h2 {
+  font-weight: 600;
+  margin: 0 0 10px;
+  padding: 0;
+  font-size: 24px;
+}
+
+.modal-content-g article h3 {
+  font-family: 'Microsoft YaHei UI';
+  font-weight: 600;
+  color: #00dddd;
+  font-size: 24px;
+  display: inline-block;
+}
+.modal-content-g article p {
+  font-family: 'Microsoft YaHei UI';
+  font-weight: 600;
+  color: #aaa;
+  font-size: 24px;
+  display: inline-block;
+}
+.modal-content-g article {
+  text-align: left;
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 20px 0 30px 0;
+  font-size: 16px;
+  line-height: 1.75;
+}
+.modal-content-g footer {
+  font-family: 'Microsoft YaHei UI';
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0 0;
+}
+.modal-content-g footer .button {
+  font-family: 'Microsoft YaHei UI';
+  position: relative;
+  padding: 10px 30px;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 400;
+  color: white;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+.modal-content-g footer .button:before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: width 250ms ease;
+  z-index: 0;
+}
+.modal-content-g footer .button:hover:before {
+  width: 100%;
+}
+.modal-content-g footer .button.success-g {
+  cursor: pointer;
+  margin-right: 5px;
+  background-color: #2ecc71;
+}
+.modal-content-g footer .button.danger-g {
+  background-color: #e74c3c;
+}
+
+#modal-g {
+  display: none;
+}
+
+#modal-g:checked ~ .modal-bg-g {
+  visibility: visible;
+  background-color: black;
+  opacity: 0.7;
+  transition: background-color 250ms linear;
+  z-index: 100;
+}
+#modal-g:checked ~ .modal-content-g {
+  visibility: visible;
+  transform: scale(1);
+  transition: transform 250ms ease;
+  z-index: 111;
+}
+
+
+
+
+
+cp-accordion-container:not(:defined),
+cp-accordion:not(:defined),
+cp-accordion-header:not(:defined),
+cp-accordion-body:not(:defined) {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --body-background-color: #F5F5F5FF;
+  --primaty-text-color-on-white-background: #000000DE;
+  --secondary-text-color-on-white-background: #0000008F;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+
+
+
+main {
+  margin: 0px auto;
+  text-align: center;
+  width: 80%;
+  padding: 0 16px 16px;
+}
+
+h1 {
+  font-family: 'Microsoft YaHei UI';
+  font-size: 26px;
+  color: #aaa;
+  font-weight: bolder;
+  padding: 16px 0 16px;
+}
+
+h2 {
+  color: var(--secondary-text-color-on-white-background);
+  font-family: 'Microsoft YaHei UI';
+  font-size: 16px;
+  padding: 16px 0 16px;
+}
+
+[js-no-support] a {
+  color: #b71c1c;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0 16px;
+}
+.input-container__label {
+  will-change: color;
+  padding-bottom: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--secondary-text-color-on-white-background);
+}
+.input-container__input {
+  will-change: background-color, border-color;
+  color: var(--primary-text-color-on-white-background);
+  padding: 8px 16px;
+  background-color: #EEEEEE;
+  border: 1px solid #0000001F;
+  border-radius: 3px;
+}
+.input-container__input:not(select) {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.input-container__input:focus {
+  outline: none;
+  background-color: #E0E0E0;
+  border-color: #1976D2;
+}
+.input-container:focus-within .input-container__label {
+  color: #1976D2;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.footer__button {
+  box-sizing: border-box;
+  border: none;
+  display: inline-block;
+  vertical-align: baseline;
+  text-align: center;
+  margin: 0;
+  min-width: 88px;
+  line-height: 36px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0 16px;
+  border-radius: 3px;
+  color: #1976D2;
+  background-color: transparent;
+}
+.footer__button:hover, .footer__button:focus {
+  background-color: #0000000F;
+  outline: none;
+}
+.footer__button:active {
+  background-color: #0000001F;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.aa {
+  text-align: center;
+  font-size: 16px;
+}
+
+.ser {
+  position: relative;
+  display: inline-block;
+}
+
+.acc {
+  width: 40px;
+  height: 40px;
+}
+
+.accpic {
+  width: 70%;
+  height: 70%;
+}
+
+
+
+
+.container0    { 
+
+  font-family:'Roboto';
+  width:310px; 
+  margin-left: 296px; 
+  display: inline-block; 
+  
+  
+}
+
+h4 {
+  font-family: 'Microsoft YaHei UI';
+  font-weight: 600;
+  font-size:40px;
+  color: #888888;
+  margin-top: 101px;
+}
+
+.group        { 
+  position:relative;
+  display: inline-block;   
+}
+.group2        { 
+  margin-right: 360px; 
+  position: relative;
+  display: inline-block;   
+}
+
+.group3        { 
+  margin-top: 50px; 
+  position: relative;
+  display: inline-block;  
+}
+
+
+
+
+input         {
+  font-family: 'Microsoft YaHei UI';
+  font-weight: lighter;
+  font-size:18px;
+  color: #888888;
+  padding:10px 0px 5px 0px;
+  display:block;
+  width:100%;
+  border:none;
+  border-bottom:1.6px solid #00dddd;
+}
+input:focus     { outline:none; }
+
+/* LABEL ======================================= */
+.c1          {
+  font-family: 'Microsoft YaHei UI';
+  color:#aaa; 
+  font-size:18px;
+  font-weight: 250;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.5s ease all; 
+  -moz-transition:0.5s ease all; 
+  -webkit-transition:0.5s ease all;
+}
+
+/* active state */
+input:focus ~ .c1, input:valid ~ .c1    {
+  visibility: hidden;
+  color:#00dddd;
+  font-weight: 300;
+}
+
+/* BOTTOM BARS ================================= */
+.bar  { position:relative; display:block; width:100%;width: 300px; }
+.bar:before, .bar:after   {
+  content:'';
+  height:1.8px; 
+  width:0;
+  
+  position:absolute;
+  background:#00dddd; 
+  transition:0.5s ease all; 
+  -moz-transition:0.5s ease all; 
+  -webkit-transition:0.5s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from { background:#00dddd; }
+  to  { width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+  from { background:#00dddd; }
+  to  { width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+  from { background:#00dddd; }
+  to  { width:0; background:transparent; }
+}
+
+
+
+
+.c2          {
+  font-family: 'Microsoft YaHei UI';
+  color:#666; 
+  font-size:18px;
+  font-weight: 250;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.5s ease all; 
+  -moz-transition:0.5s ease all; 
+  -webkit-transition:0.5s ease all;
+}
+
+/* active state */
+input:focus ~ .c2, input:valid ~ .c2    {
+  visibility: hidden;
+  color:#00dddd;
+  font-weight: 300;
+}
+
+
+.group3 input {
+  background-color: inherit;
+}
+
+.signin {
+  margin: 80px 0;
+  font-family: 'Microsoft YaHei UI';
+  color:#000; 
+  font-size:25px;
+  font-weight: 600;
+  width: 200px;
+  height: 70px;
+  border-radius: 10px;
+  border: 3px solid #000;
+  background-color: inherit;
+}
+
+.signin:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #00dddd;
+  border: 3px solid #00dddd;
+}
+
+
+
+
+body {
+  margin: 0;
+}
+
+/* Disable ugly boxes around images in IE10 */
+a img{
+  border: 0px;
+}
+
+::-moz-selection {
+  background-color: #6ab344;
+  color: #fff;
+}
+
+::selection {
+  background-color: #6ab344;
+  color: #fff;
+}
+
+.android-search-box .mdl-textfield__input {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.android-header .mdl-menu__container {
+  z-index: 50;
+  margin: 0 !important;
+}
+
+
+.mdl-textfield--expandable {
+  width: auto;
+}
+
+.android-fab {
+  position: absolute;
+  right: 20%;
+  bottom: -26px;
+  z-index: 3;
+  background: #64ffda !important;
+  color: black !important;
+}
+
+.android-mobile-title {
+  display: none !important;
+}
+
+
+.android-logo-image {
+  height: 40px;
+  width: 150px;
+}
+
+
+.android-header {
+  overflow: visible;
+  background-color: white;
+}
+
+  .android-header .material-icons {
+    color: #767777 !important;
+  }
+
+  .android-header .mdl-layout__drawer-button {
+    background: transparent;
+    color: #767777;
+  }
+
+  .android-header .mdl-navigation__link {
+    color: #757575;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .android-navigation-container {
+    /* Simple hack to make the overflow happen to the left instead... */
+    direction: rtl;
+    -webkit-order: 1;
+        -ms-flex-order: 1;
+            order: 1;
+    width: 500px;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .android-navigation {
+    /* ... and now make sure the content is actually LTR */
+    direction: ltr;
+    -webkit-justify-content: flex-end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    width: 800px;
+  }
+
+  .android-search-box.is-focused + .android-navigation-container {
+    opacity: 0;
+    width: 100px;
+  }
+
+
+  .android-navigation .mdl-navigation__link {
+    display: inline-block;
+    height: 60px;
+    line-height: 68px;
+    background-color: transparent !important;
+    border-bottom: 4px solid transparent;
+  }
+
+    .android-navigation .mdl-navigation__link:hover {
+      border-bottom: 4px solid #8bc34a;
+    }
+
+  .android-search-box {
+    -webkit-order: 2;
+        -ms-flex-order: 2;
+            order: 2;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .android-more-button {
+    -webkit-order: 3;
+        -ms-flex-order: 3;
+            order: 3;
+  }
+
+
+.android-drawer {
+  border-right: none;
+}
+
+  .android-drawer-separator {
+    height: 1px;
+    background-color: #dcdcdc;
+    margin: 8px 0;
+  }
+
+  .android-drawer .mdl-navigation__link.mdl-navigation__link {
+    font-size: 14px;
+    color: #757575;
+  }
+
+  .android-drawer span.mdl-navigation__link.mdl-navigation__link {
+    color: #8bc34a;
+  }
+
+  .android-drawer .mdl-layout-title {
+    position: relative;
+    background: #6ab344;
+    height: 160px;
+  }
+
+    .android-drawer .android-logo-image {
+      position: absolute;
+      bottom: 16px;
+    }
+
+
+
+.logo-font {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  line-height: 1;
+  color: #767777;
+  font-weight: 500;
+}
+
+.android-slogan {
+  font-size: 60px;
+  padding-top: 160px;
+}
+
+.android-sub-slogan {
+  font-size: 21px;
+  padding-top: 24px;
+}
+
+.android-create-character {
+  font-size: 21px;
+  padding-top: 400px;
+}
+
+  .android-create-character a {
+    text-decoration: none;
+    color: #767777;
+    font-weight: 300;
+  }
+
+.android-screen-section {
+  position: relative;
+  padding-top: 60px;
+  padding-bottom: 80px;
+}
+
+.android-screens {
+  text-align: right;
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.android-screen {
+  text-align: center;
+}
+
+.android-screen .android-link {
+  margin-top: 16px;
+  display: block;
+  z-index: 2;
+}
+
+.android-image-link {
+  text-decoration: none;
+}
+
+.android-wear {
+  display: inline-block;
+  width: 160px;
+  margin-right: 32px;
+}
+
+  .android-wear .android-screen-image {
+    width: 40%;
+    z-index: 1;
+  }
+
+
+.android-phone {
+  display: inline-block;
+  width: 64px;
+  margin-right: 48px;
+}
+
+  .android-phone .android-screen-image {
+    width: 100%;
+    z-index: 1;
+  }
+
+
+.android-tablet {
+  display: inline-block;
+  width: 110px;
+  margin-right: 64px;
+}
+
+  .android-tablet .android-screen-image {
+    width: 100%;
+    z-index: 1;
+  }
+
+  .android-tablet .android-link {
+    display: block;
+    z-index: 2;
+  }
+
+
+.android-tv {
+  display: inline-block;
+  width: 300px;
+  margin-right: 80px;
+}
+
+  .android-tv .android-screen-image {
+    width: 100%;
+    z-index: 1;
+  }
+
+
+.android-auto {
+  display: inline-block;
+  width: 300px;
+  overflow: hidden;
+}
+
+  .android-auto .android-screen-image {
+    display: block;
+    height: 300px;
+    z-index: 1;
+  }
+
+
+.android-wear-section {
+  position: relative;
+  background: url('images/wear.png') center top no-repeat;
+  background-size: cover;
+  height: 800px;
+}
+
+.android-wear-band {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #37474f;
+}
+
+.android-wear-band-text {
+  max-width: 800px;
+  margin-left: 25%;
+  padding: 24px;
+  text-align: left;
+  color: white;
+}
+
+  .android-wear-band-text p {
+    padding-top: 8px;
+  }
+
+.android-link {
+  text-decoration: none;
+  color: #8bc34a !important;
+}
+
+  .android-link:hover {
+    color: #7cb342 !important;
+  }
+
+  .android-link .material-icons {
+    position: relative;
+    top: -1px;
+    vertical-align: middle;
+  }
+
+.android-alt-link {
+  text-decoration: none;
+  color: #64ffda !important;
+  font-size: 16px;
+}
+
+  .android-alt-link:hover {
+    color: #00bfa5 !important;
+  }
+
+  .android-alt-link .material-icons {
+    position: relative;
+    top: 6px;
+  }
+
+.android-customized-section {
+  text-align: center;
+}
+
+.android-customized-section-text {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 80px 16px 0 16px;
+}
+
+  .android-customized-section-text p {
+    padding-top: 16px;
+  }
+
+.android-customized-section-image {
+  background: url('images/devices.jpg') center top no-repeat;
+  background-size: cover;
+  height: 400px;
+}
+
+.android-more-section {
+  padding: 80px 0;
+  max-width: 1044px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+  .android-more-section .android-section-title {
+    margin-left: 12px;
+    padding-bottom: 24px;
+  }
+
+.android-card-container {
+}
+
+  .android-card-container .mdl-card__media {
+    overflow: hidden;
+    background: transparent;
+  }
+
+    .android-card-container .mdl-card__media img {
+      width: 100%;
+    }
+
+  .android-card-container .mdl-card__title {
+    background: transparent;
+    height: auto;
+  }
+
+  .android-card-container .mdl-card__title-text {
+    color: black;
+    height: auto;
+  }
+
+  .android-card-container .mdl-card__supporting-text {
+    height: auto;
+    color: black;
+    padding-bottom: 56px;
+  }
+
+  .android-card-container .mdl-card__actions {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .android-card-container .mdl-card__actions a {
+    border-top: none;
+    font-size: 16px;
+  }
+
+.android-footer {
+	height: 180px;
+  	background-color: #2f2f2f; 
+  	position: relative;
+ 	bottom: 0px;
+ 	width: 94.8%;
+}
+
+  .android-footer a:hover {
+    color: #00dddd;
+  }
+
+  .android-footer .mdl-mega-footer--top-section::after {
+    border-bottom: none;
+  }
+
+  .android-footer .mdl-mega-footer--middle-section::after {
+    border-bottom: none;
+  }
+
+  .android-footer .mdl-mega-footer--bottom-section {
+    position: relative;
+  }
+
+  .android-footer .mdl-mega-footer--bottom-section a {
+    margin-right: 2%;
+  }
+
+  .android-footer .mdl-mega-footer--right-section a .material-icons {
+    position: relative;
+    top: 6px;
+  }
+
+
+.android-link-menu:hover {
+  cursor: pointer;
+}
+
+
+/**** Mobile layout ****/
+@media (max-width: 900px) {
+  .android-navigation-container {
+    display: none;
+  }
+
+  .android-title {
+    display: none !important;
+  }
+
+  .android-mobile-title {
+    display: block !important;
+    position: absolute;
+    left: calc(50% - 70px);
+    top: 12px;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* WebViews in iOS 9 break the "~" operator, and WebViews in OS X 10.10 break
+     consecutive "+" operators in some cases. Therefore, we need to use both
+     here to cover all the bases. */
+  .android.android-search-box.is-focused ~ .android-mobile-title,
+  .android-search-box.is-focused + .android-navigation-container + .android-mobile-title {
+    opacity: 0;
+  }
+
+  .android-more-button {
+    display: none;
+  }
+
+  .android-search-box.is-focused {
+    width: calc(100% - 48px);
+  }
+
+  .android-search-box .mdl-textfield__expandable-holder {
+    width: 100%;
+  }
+
+  .android-be-together-section {
+    height: 350px;
+  }
+
+  .android-slogan {
+    font-size: 26px;
+    margin: 0 16px;
+    padding-top: 24px;
+  }
+
+  .android-sub-slogan {
+    font-size: 16px;
+    margin: 0 16px;
+    padding-top: 8px;
+  }
+
+  .android-create-character {
+    padding-top: 200px;
+    font-size: 16px;
+  }
+
+  .android-create-character img {
+    height: 12px;
+  }
+
+  .android-fab {
+    display: none;
+  }
+
+  .android-wear-band-text {
+    margin-left: 0;
+    padding: 16px;
+  }
+
+  .android-footer .mdl-mega-footer--bottom-section {
+    display: none;
+  }
+}
+
+#fl {
+  width: 100px;
+}
+
+#flre {
+  height: 30px;
+  margin-right: 10px;
+}
+
+.lastlogo {
+  text-align: center;
+  margin: 0px auto;
+}
+
+
+
+/* ----------------------------*/
+
+.tabs {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  position: relative;
+  background: white;
+  padding: 0 50px 50px 50px;
+  padding-bottom: 80px;
+  width: 90%;
+  height: 250px;
+  min-width: 240px;
+}
+.tabs input[name="tab-control"] {
+  display: none;
+}
+.tabs .content section h2,
+.tabs ul li label {
+  font-family: 'Microsoft YaHei UI';
+  font-weight: bold;
+  font-size: 18px;
+  color: #00dddd;
+}
+.tabs ul {
+  list-style-type: none;
+  padding-left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 10px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.tabs ul li {
+  box-sizing: border-box;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  width: 25%;
+  padding: 0 10px;
+  text-align: center;
+}
+.tabs ul li label {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  color: #bbb;
+  padding: 5px auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.tabs ul li label br {
+  display: none;
+}
+.tabs ul li label:hover, .tabs ul li label:focus, .tabs ul li label:active {
+  outline: 0;
+  color: #00dddd;
+}
+.tabs ul li label:hover svg, .tabs ul li label:focus svg, .tabs ul li label:active svg {
+  fill: #00dddd;
+}
+.tabs .slider {
+  position: relative;
+  width: 25%;
+  -webkit-transition: all 0.33s cubic-bezier(0.38, 0.8, 0.32, 1.07);
+  transition: all 0.33s cubic-bezier(0.38, 0.8, 0.32, 1.07);
+}
+.tabs .slider .indicator {
+  position: relative;
+  width: 100px;
+  max-width: 100%;
+  margin: 0 auto;
+  height: 4px;
+  background: #00dddd;
+  border-radius: 6px;
+}
+.tabs .content {
+  margin-top: 30px;
+}
+.tabs .content section {
+  font-family: 'Microsoft YaHei UI';
+  font-size: 18px;
+  text-align: left;
+  color: #666;
+  display: none;
+  -webkit-animation-name: content;
+          animation-name: content;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  line-height: 1.4;
+}
+.tabs .content section h2 {
+  color: #00dddd;
+  display: none;
+}
+.tabs .content section h2::after {
+  content: "";
+  position: relative;
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: #00dddd;
+  margin-top: 5px;
+  left: 1px;
+}
+.tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label {
+  cursor: default;
+  color: #00dddd;
+}
+.tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label svg {
+  fill: #00dddd;
+}
+@media (max-width: 600px) {
+  .tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label {
+    background: rgba(0, 0, 0, 0.08);
+  }
+}
+.tabs input[name="tab-control"]:nth-of-type(1):checked ~ .slider {
+  -webkit-transform: translateX(17%);
+          transform: translateX(17%);
+}
+.tabs input[name="tab-control"]:nth-of-type(1):checked ~ .content > section:nth-child(1) {
+  display: block;
+}
+.tabs input[name="tab-control"]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label {
+  cursor: default;
+  color: #00dddd;
+}
+.tabs input[name="tab-control"]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label svg {
+  fill: #00dddd;
+}
+@media (max-width: 600px) {
+  .tabs input[name="tab-control"]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label {
+    background: rgba(0, 0, 0, 0.08);
+  }
+}
+.tabs input[name="tab-control"]:nth-of-type(2):checked ~ .slider {
+  -webkit-transform: translateX(151%);
+          transform: translateX(151%);
+}
+.tabs input[name="tab-control"]:nth-of-type(2):checked ~ .content > section:nth-child(2) {
+  display: block;
+}
+
+.tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label {
+  cursor: default;
+  color: #00dddd;
+}
+.tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label svg {
+  fill: #00dddd;
+}
+@media (max-width: 600px) {
+  .tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label {
+    background: rgba(0, 0, 0, 0.08);
+  }
+}
+.tabs input[name="tab-control"]:nth-of-type(3):checked ~ .slider {
+  -webkit-transform: translateX(285%);
+          transform: translateX(285%);
+}
+.tabs input[name="tab-control"]:nth-of-type(3):checked ~ .content > section:nth-child(3) {
+  display: block;
+}
+@-webkit-keyframes content {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(5%);
+            transform: translateY(5%);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+}
+@keyframes content {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(5%);
+            transform: translateY(5%);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+}
+@media (max-width: 1000px) {
+  .tabs ul li label {
+    white-space: initial;
+  }
+  .tabs ul li label br {
+    display: initial;
+  }
+  .tabs ul li label svg {
+    height: 1.5em;
+  }
+}
+@media (max-width: 600px) {
+  .tabs ul li label {
+    padding: 5px;
+    border-radius: 5px;
+  }
+  .tabs ul li label span {
+    display: none;
+  }
+  .tabs .slider {
+    display: none;
+  }
+  .tabs .content {
+    margin-top: 20px;
+  }
+  .tabs .content section h2 {
+    display: block;
+  }
+}
